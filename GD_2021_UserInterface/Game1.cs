@@ -49,11 +49,18 @@ namespace GD_2021_UserInterface
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            string str = "Hello";
+            var dimensions = spriteFont.MeasureString(str);
+            var origin = new Vector2(dimensions.X / 2, dimensions.Y / 2);
+
             //How to draw text/image?
             _spriteBatch.Begin();
-            _spriteBatch.DrawString(spriteFont, "Hello",
-                new Vector2(0, 0), Color.White, 0,
-                Vector2.Zero, 1, SpriteEffects.None, 0);
+            _spriteBatch.DrawString(spriteFont,
+                str,
+                new Vector2(200, 200), Color.White,
+                45,
+                origin, //Vector2.Zero,
+                1, SpriteEffects.None, 0);
             _spriteBatch.End();
 
             base.Draw(gameTime);
