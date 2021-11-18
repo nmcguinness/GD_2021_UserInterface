@@ -13,6 +13,8 @@ namespace GD_2021_UserInterface
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private SpriteFont spriteFont;
+        private Texture2D progressTexture;
+        private float rotationInDegrees;
 
         public Game1()
         {
@@ -31,17 +33,13 @@ namespace GD_2021_UserInterface
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
             spriteFont = Content.Load<SpriteFont>("ui_font");
+            progressTexture = Content.Load<Texture2D>("ui_progress_32_8");
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            // TODO: Add your update logic here
-
+            rotationInDegrees += 1 / 60.0f;
             base.Update(gameTime);
         }
 
@@ -58,9 +56,19 @@ namespace GD_2021_UserInterface
             _spriteBatch.DrawString(spriteFont,
                 str,
                 new Vector2(200, 200), Color.White,
-                45,
+                rotationInDegrees,
                 origin, //Vector2.Zero,
                 1, SpriteEffects.None, 0);
+            _spriteBatch.End();
+
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(progressTexture, new Vector2(200, 300),
+                new Rectangle(0, 0, 16, 8),
+                Color.White, 0,
+                new Vector2(progressTexture.Width / 2, progressTexture.Height / 2),
+                new Vector2(4, 4),
+                SpriteEffects.FlipVertically,
+                0);
             _spriteBatch.End();
 
             base.Draw(gameTime);
