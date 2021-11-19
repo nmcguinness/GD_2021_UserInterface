@@ -27,7 +27,7 @@ Entities
 
 namespace GD_2021_UserInterface
 {
-    public class Game1 : Game
+    public class Main : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -35,7 +35,7 @@ namespace GD_2021_UserInterface
         private Texture2D progressTexture;
         private float rotationInDegrees;
 
-        public Game1()
+        public Main()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -44,7 +44,27 @@ namespace GD_2021_UserInterface
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            //create the manager
+            var uiManager = new UISceneManager(this, _spriteBatch);
+            Components.Add(uiManager);
+
+            //create the scene
+            var mainGameUIScene = new UIScene("main game ui");
+
+            //create the UI element
+            var healthBar = new UITextureObject(
+                new Transform2D(new Vector2(100, 300), Vector2.One, 0),
+                0, progressTexture);
+            //healthBar.AddComponent(new ProgressBehaviour(EventType.Pickup));
+
+            //add the ui element to the scene
+            mainGameUIScene.Add(healthBar);
+
+            //add the ui scene to the manager
+            uiManager.Add(mainGameUIScene);
+
+            //set the active scene
+            uiManager.SetActiveScene("main game ui");
 
             base.Initialize();
         }

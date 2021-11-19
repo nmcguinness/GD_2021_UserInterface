@@ -12,7 +12,13 @@ namespace GD_2021_UserInterface
 
         private List<UIObject> uiObjects;
 
-        public string ID { get => id; set => id = "UIS_" + Guid.NewGuid(); }
+        public UIScene(string name)
+        {
+            Name = name;
+            ID = "UIS_" + Guid.NewGuid();
+        }
+
+        public string ID { get => id; set => id = value; }
 
         //TODO - add length and null check on name
         public string Name { get => name; set => name = value.Trim(); }

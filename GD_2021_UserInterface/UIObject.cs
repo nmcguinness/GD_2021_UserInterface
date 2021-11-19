@@ -43,6 +43,21 @@ namespace GD_2021_UserInterface
         public Texture2D AlternateTexture { get => alternateTexture; set => alternateTexture = value; }
         public Rectangle SourceRectangle { get => sourceRectangle; set => sourceRectangle = value; }
 
+        /// <summary>
+        /// Use this constructor draw FULL, UNROTATED, ZERO ORIGIN textures
+        /// </summary>
+        /// <param name="transform"></param>
+        /// <param name="depth"></param>
+        /// <param name="activeTexture"></param>
+        public UITextureObject(Transform2D transform,
+            float depth, Texture2D activeTexture)
+            : this(transform, depth,
+            SpriteEffects.None, Vector2.Zero,
+            activeTexture, null,
+            new Rectangle(0, 0, activeTexture.Width, activeTexture.Height))
+        {
+        }
+
         public UITextureObject(Transform2D transform, float depth,
             SpriteEffects spriteEffects, Vector2 origin,
             Texture2D activeTexture, Texture2D alternateTexture,
