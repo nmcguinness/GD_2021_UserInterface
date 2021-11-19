@@ -23,6 +23,11 @@ namespace GD_2021_UserInterface
             Origin = origin;
         }
 
+        public virtual void Update()
+        {
+            //TODO - here we will update all components
+        }
+
         public abstract void Draw(SpriteBatch spriteBatch);
 
         //TODO - Clone
