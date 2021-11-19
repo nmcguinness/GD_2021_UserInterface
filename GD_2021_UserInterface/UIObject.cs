@@ -24,6 +24,8 @@ namespace GD_2021_UserInterface
         }
 
         public abstract void Draw(SpriteBatch spriteBatch);
+
+        //TODO - Clone
     }
 
     public class UITextureObject : UIObject
@@ -61,5 +63,9 @@ namespace GD_2021_UserInterface
                 depth);
             //End
         }
+
+        //TODO - Clone
     }
+
+    //TODO - UITextObject
 }
