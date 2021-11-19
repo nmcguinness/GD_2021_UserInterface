@@ -5,10 +5,10 @@ namespace GD_2021_UserInterface
 {
     public abstract class UIObject
     {
-        private Transform2D transform;
-        private float depth;
-        private SpriteEffects spriteEffects;
-        private Vector2 origin;
+        protected Transform2D transform;
+        protected float depth;
+        protected SpriteEffects spriteEffects;
+        protected Vector2 origin;
 
         public Transform2D Transform { get => transform; set => transform = value; }
         public float Depth { get => depth; set => depth = value; }
@@ -36,8 +36,10 @@ namespace GD_2021_UserInterface
         public Texture2D AlternateTexture { get => alternateTexture; set => alternateTexture = value; }
         public Rectangle SourceRectangle { get => sourceRectangle; set => sourceRectangle = value; }
 
-        public UITextureObject(Transform2D transform, float depth, SpriteEffects spriteEffects, Vector2 origin,
-            Texture2D activeTexture, Texture2D alternateTexture, Rectangle sourceRectangle)
+        public UITextureObject(Transform2D transform, float depth,
+            SpriteEffects spriteEffects, Vector2 origin,
+            Texture2D activeTexture, Texture2D alternateTexture,
+            Rectangle sourceRectangle)
         : base(transform, depth, spriteEffects, origin)
         {
             ActiveTexture = activeTexture;
@@ -47,7 +49,17 @@ namespace GD_2021_UserInterface
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            throw new System.NotImplementedException();
+            //Begin
+            spriteBatch.Draw(activeTexture, //TODO - variable e.g. texture
+                Transform.LocalTranslation,
+                sourceRectangle,
+                Color.White, //TODO - add color to UIObject
+                Transform.RotationInDegrees,
+                origin,
+                Transform.LocalScale,
+                SpriteEffects,
+                depth);
+            //End
         }
     }
 }
