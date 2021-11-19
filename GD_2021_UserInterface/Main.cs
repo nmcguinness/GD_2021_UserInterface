@@ -68,7 +68,7 @@ namespace GD_2021_UserInterface
 
         private void InitializeGameMenu()
         {
-            //TODO - we will need to add MenuManager : UISceneManager in Week 9
+            //TODO - we will need to add MenuManager : UISceneManager in Week 9...
         }
 
         private void InitializeGameUI()
