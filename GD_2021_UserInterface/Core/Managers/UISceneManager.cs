@@ -1,46 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 
-namespace GD_2021_UserInterface
+namespace GDLibrary.Components.UI
 {
-    public class UIScene
-    {
-        //id, name, isVisible, isEnabled, UISceneType {Options, Main, InGame}
-        private string id, name;
-
-        private List<UIObject> uiObjects;
-
-        public UIScene(string name)
-        {
-            Name = name;
-            ID = "UIS_" + Guid.NewGuid();
-        }
-
-        public string ID { get => id; set => id = value; }
-
-        //TODO - add length and null check on name
-        public string Name { get => name; set => name = value.Trim(); }
-
-        public List<UIObject> UiObjects { get => uiObjects; set => uiObjects = value; }
-
-        //constructor, add, remove, find, clear, update, draw
-
-        public virtual void Update()
-        {
-            foreach (UIObject uiObject in uiObjects)
-                uiObject.Update();
-            //TODO - add isEnabled check on uiObject
-        }
-
-        public virtual void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (UIObject uiObject in uiObjects)
-                uiObject.Draw(spriteBatch);
-        }
-    }
-
+    /// <summary>
+    /// Stores a dictionary of ui scenes and updates and draws the currently active scene
+    /// </summary>
     public class UISceneManager : DrawableGameComponent
     {
         private SpriteBatch spriteBatch;
