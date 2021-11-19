@@ -1,8 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 /*
+MOSCOW
+
+MUST
+----
+- Texture, Text
+- Respond to mouse/keyboard/gamepad
+
+SHOULD
+-----
+- Modify object over time
+
+COULD
+-----
+- Camera (camera effects)
+
+Entities
+------
+- Transform2D (t,r,s,w)
+- UIObject, UITextObject, UITextureObject
+- UIScene, UISceneManager
 
  */
 
@@ -61,7 +80,8 @@ namespace GD_2021_UserInterface
                 1, SpriteEffects.None, 0);
             _spriteBatch.End();
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend,
+                null, null, null);
             _spriteBatch.Draw(progressTexture, new Vector2(200, 300),
                 new Rectangle(0, 0, 16, 8),
                 Color.White, 0,
